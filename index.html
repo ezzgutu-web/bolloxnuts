@@ -1,0 +1,930 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bellavista Prosecco — Crafted in the Hills of Treviso</title>
+  <meta name="description" content="Discover Bellavista, an exceptional Prosecco DOC from the rolling hills of Treviso, Northern Italy. Delicate, luminous, and unmistakably Italian.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --gold:       #c9a84c;
+      --gold-light: #e8d49a;
+      --gold-pale:  #f5edd6;
+      --ivory:      #faf7f0;
+      --cream:      #f0e8d5;
+      --green:      #2c4a3e;
+      --green-mid:  #3d6b5c;
+      --charcoal:   #1e1e1e;
+      --ink:        #2a2a2a;
+      --muted:      #7a7060;
+      --border:     rgba(201,168,76,0.25);
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+      background: var(--ivory);
+      color: var(--ink);
+      line-height: 1.7;
+      overflow-x: hidden;
+    }
+
+    /* NAV */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.2rem 4rem;
+      background: rgba(250,247,240,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+      transition: padding 0.3s;
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--green);
+      text-decoration: none;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.78rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+
+    .nav-links a:hover { color: var(--gold); }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, var(--ivory) 0%, var(--cream) 100%);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; right: -120px;
+      width: 600px; height: 600px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-text {
+      padding: 6rem 4rem 6rem 8rem;
+    }
+
+    .hero-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 5vw, 5.5rem);
+      font-weight: 300;
+      line-height: 1.1;
+      color: var(--green);
+      margin-bottom: 1.8rem;
+    }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      color: var(--muted);
+      max-width: 420px;
+      margin-bottom: 3rem;
+      line-height: 1.8;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: var(--green);
+      color: var(--ivory);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--green);
+      transition: all 0.3s;
+    }
+
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--green);
+    }
+
+    .btn-secondary {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background: transparent;
+      color: var(--green);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      margin-left: 1rem;
+      transition: all 0.3s;
+    }
+
+    .btn-secondary:hover {
+      border-color: var(--gold);
+      color: var(--gold);
+    }
+
+    .hero-visual {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 6rem 4rem;
+      position: relative;
+    }
+
+    .bottle-wrap {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* SVG Prosecco Bottle */
+    .bottle-svg {
+      width: 180px;
+      filter: drop-shadow(0 30px 60px rgba(44,74,62,0.2));
+      animation: float 6s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-16px); }
+    }
+
+    .bottle-glow {
+      position: absolute;
+      width: 300px; height: 300px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,168,76,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .bottle-ring {
+      position: absolute;
+      width: 260px; height: 260px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      animation: spin 20s linear infinite;
+    }
+
+    .bottle-ring-2 {
+      width: 320px; height: 320px;
+      animation-duration: 30s;
+      animation-direction: reverse;
+      border-color: rgba(201,168,76,0.1);
+    }
+
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    /* ORIGIN STRIP */
+    .origin-strip {
+      background: var(--green);
+      color: var(--gold-light);
+      padding: 1.2rem 4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 4rem;
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+    }
+
+    .origin-strip span {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .origin-strip span::before {
+      content: '✦';
+      font-size: 0.6rem;
+      opacity: 0.6;
+    }
+
+    /* TASTING NOTES */
+    .section {
+      padding: 8rem 8rem;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .section-label::before {
+      content: '';
+      display: block;
+      width: 40px; height: 1px;
+      background: var(--gold);
+    }
+
+    .section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2rem, 3.5vw, 3.5rem);
+      font-weight: 300;
+      color: var(--green);
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .tasting-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+      margin-top: 4rem;
+    }
+
+    .tasting-notes {
+      display: flex;
+      flex-direction: column;
+      gap: 2rem;
+    }
+
+    .note {
+      display: grid;
+      grid-template-columns: 80px 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      padding-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .note:last-child { border-bottom: none; }
+
+    .note-icon {
+      width: 56px; height: 56px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+    }
+
+    .note-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--green);
+      margin-bottom: 0.4rem;
+    }
+
+    .note-desc {
+      font-size: 0.92rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .tasting-image {
+      position: relative;
+    }
+
+    .tasting-card {
+      background: var(--cream);
+      padding: 3rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .tasting-card::before {
+      content: '"';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 8rem;
+      color: var(--gold);
+      opacity: 0.15;
+      position: absolute;
+      top: -1rem; left: 1.5rem;
+      line-height: 1;
+    }
+
+    .tasting-quote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-style: italic;
+      color: var(--green);
+      line-height: 1.6;
+      margin-bottom: 1.5rem;
+    }
+
+    .tasting-attribution {
+      font-size: 0.75rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    /* SPECS */
+    .specs-section {
+      background: var(--green);
+      padding: 8rem;
+    }
+
+    .specs-section .section-label { color: var(--gold-light); }
+    .specs-section .section-label::before { background: var(--gold-light); }
+
+    .specs-section h2 {
+      color: var(--ivory);
+    }
+
+    .specs-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2px;
+      margin-top: 4rem;
+      background: rgba(255,255,255,0.05);
+    }
+
+    .spec-item {
+      background: rgba(250,247,240,0.04);
+      padding: 2.5rem 2rem;
+      border: 1px solid rgba(201,168,76,0.15);
+      transition: background 0.3s;
+    }
+
+    .spec-item:hover {
+      background: rgba(201,168,76,0.08);
+    }
+
+    .spec-label {
+      font-size: 0.7rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.8rem;
+    }
+
+    .spec-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 300;
+      color: var(--ivory);
+      line-height: 1.2;
+    }
+
+    .spec-note {
+      font-size: 0.82rem;
+      color: rgba(250,247,240,0.5);
+      margin-top: 0.4rem;
+    }
+
+    /* FOOD PAIRING */
+    .pairing-section {
+      padding: 8rem;
+      background: var(--cream);
+    }
+
+    .pairing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .pairing-card {
+      background: var(--ivory);
+      padding: 2.5rem;
+      border: 1px solid var(--border);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .pairing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 20px 40px rgba(44,74,62,0.1);
+    }
+
+    .pairing-emoji {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      display: block;
+    }
+
+    .pairing-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: var(--green);
+      margin-bottom: 0.6rem;
+    }
+
+    .pairing-desc {
+      font-size: 0.88rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* ORIGIN */
+    .origin-section {
+      padding: 8rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: center;
+    }
+
+    .origin-map {
+      background: var(--cream);
+      border: 1px solid var(--border);
+      padding: 3rem;
+      text-align: center;
+      min-height: 400px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .origin-map::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-linear-gradient(
+        45deg,
+        transparent,
+        transparent 20px,
+        rgba(201,168,76,0.03) 20px,
+        rgba(201,168,76,0.03) 21px
+      );
+    }
+
+    .origin-map-label {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2rem;
+      color: var(--green);
+      position: relative;
+    }
+
+    .origin-map-sub {
+      font-size: 0.78rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      position: relative;
+    }
+
+    .origin-coords {
+      font-size: 0.82rem;
+      color: var(--muted);
+      font-family: 'Jost', sans-serif;
+      margin-top: 1rem;
+      position: relative;
+    }
+
+    .origin-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 1.5rem;
+    }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green) 0%, #1a3028 100%);
+      padding: 8rem;
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.5rem, 4vw, 4rem);
+      font-weight: 300;
+      color: var(--ivory);
+      margin-bottom: 1rem;
+    }
+
+    .cta-section h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-desc {
+      font-size: 1rem;
+      color: rgba(250,247,240,0.65);
+      margin-bottom: 3rem;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 1.1rem 3rem;
+      background: var(--gold);
+      color: var(--green);
+      font-family: 'Jost', sans-serif;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid var(--gold);
+      transition: all 0.3s;
+    }
+
+    .btn-gold:hover {
+      background: transparent;
+      color: var(--gold);
+    }
+
+    /* FOOTER */
+    footer {
+      background: var(--charcoal);
+      padding: 3rem 8rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid rgba(201,168,76,0.15);
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      color: var(--gold);
+      text-transform: uppercase;
+    }
+
+    .footer-note {
+      font-size: 0.78rem;
+      color: rgba(250,247,240,0.3);
+      letter-spacing: 0.1em;
+    }
+
+    .age-notice {
+      font-size: 0.72rem;
+      color: rgba(250,247,240,0.25);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    /* SCROLL REVEAL */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1024px) {
+      nav { padding: 1.2rem 2rem; }
+      .hero { grid-template-columns: 1fr; min-height: auto; padding-top: 80px; }
+      .hero-text { padding: 4rem 2rem 2rem; }
+      .hero-visual { padding: 2rem; }
+      .section { padding: 5rem 2rem; }
+      .tasting-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .specs-section { padding: 5rem 2rem; }
+      .specs-grid { grid-template-columns: repeat(2, 1fr); }
+      .pairing-section { padding: 5rem 2rem; }
+      .pairing-grid { grid-template-columns: 1fr 1fr; }
+      .origin-section { grid-template-columns: 1fr; padding: 5rem 2rem; gap: 3rem; }
+      .cta-section { padding: 5rem 2rem; }
+      footer { padding: 2rem; flex-direction: column; gap: 1rem; text-align: center; }
+      .origin-strip { flex-wrap: wrap; gap: 1.5rem; padding: 1.2rem 2rem; }
+    }
+
+    @media (max-width: 640px) {
+      .nav-links { display: none; }
+      .specs-grid { grid-template-columns: 1fr 1fr; }
+      .pairing-grid { grid-template-columns: 1fr; }
+      .btn-secondary { margin-left: 0; margin-top: 1rem; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bottle-svg { animation: none; }
+      .bottle-ring { animation: none; }
+      .reveal { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#" class="nav-logo">Bellavista</a>
+    <ul class="nav-links">
+      <li><a href="#tasting">Tasting Notes</a></li>
+      <li><a href="#specs">Specifications</a></li>
+      <li><a href="#pairing">Food Pairing</a></li>
+      <li><a href="#origin">Origin</a></li>
+      <li><a href="#order">Order</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-text">
+      <div class="hero-label">Prosecco DOC · Treviso, Italy</div>
+      <h1>The Art of<br><em>Italian</em><br>Effervescence</h1>
+      <p class="hero-desc">
+        Bellavista is drawn from the finest Glera vineyards in the Valdobbiadene hills.
+        Delicate, luminous, and alive with the breath of the Italian countryside.
+      </p>
+      <a href="#order" class="btn-primary">Discover the Wine</a>
+      <a href="#tasting" class="btn-secondary">Tasting Notes</a>
+    </div>
+    <div class="hero-visual">
+      <div class="bottle-wrap">
+        <div class="bottle-glow"></div>
+        <div class="bottle-ring"></div>
+        <div class="bottle-ring bottle-ring-2"></div>
+        <!-- Prosecco Bottle SVG -->
+        <svg class="bottle-svg" viewBox="0 0 120 420" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Foil top -->
+          <rect x="44" y="0" width="32" height="18" rx="3" fill="#c9a84c"/>
+          <rect x="46" y="14" width="28" height="8" rx="2" fill="#a8883a"/>
+          <!-- Cork area -->
+          <rect x="48" y="22" width="24" height="28" rx="4" fill="#d4b896"/>
+          <rect x="50" y="24" width="20" height="24" rx="3" fill="#e8d4b8"/>
+          <!-- Neck -->
+          <path d="M44 50 C44 50 40 60 38 80 L38 100 L82 100 L82 80 C80 60 76 50 76 50 Z" fill="#2c6e49"/>
+          <path d="M46 52 C46 52 42 62 40 80 L40 98 L80 98 L80 80 C78 62 74 52 74 52 Z" fill="#3d7a58" opacity="0.5"/>
+          <!-- Shoulder -->
+          <path d="M38 100 Q30 120 28 140 L28 360 Q28 380 60 380 Q92 380 92 360 L92 140 Q90 120 82 100 Z" fill="#2c6e49"/>
+          <!-- Body highlight -->
+          <path d="M40 110 Q34 128 32 148 L32 340 Q32 365 60 368 L60 108 Q50 108 40 110 Z" fill="#3d7a58" opacity="0.4"/>
+          <!-- Label area -->
+          <rect x="32" y="160" width="56" height="120" rx="2" fill="#faf7f0" opacity="0.92"/>
+          <!-- Label content -->
+          <text x="60" y="195" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#2c4a3e" font-style="italic">Bellavista</text>
+          <line x1="38" y1="200" x2="82" y2="200" stroke="#c9a84c" stroke-width="0.5"/>
+          <text x="60" y="212" text-anchor="middle" font-family="Arial, sans-serif" font-size="5.5" fill="#7a7060" letter-spacing="1">PROSECCO DOC</text>
+          <text x="60" y="224" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" fill="#7a7060" letter-spacing="0.5">TREVISO · ITALY</text>
+          <rect x="44" y="230" width="32" height="16" rx="1" fill="#2c4a3e"/>
+          <text x="60" y="241" text-anchor="middle" font-family="Arial, sans-serif" font-size="5.5" fill="#c9a84c" letter-spacing="1">EXTRA DRY</text>
+          <line x1="38" y1="250" x2="82" y2="250" stroke="#c9a84c" stroke-width="0.5"/>
+          <text x="60" y="262" text-anchor="middle" font-family="Arial, sans-serif" font-size="5" fill="#7a7060">75 cl · 11% vol</text>
+          <!-- Punt (base indent) -->
+          <ellipse cx="60" cy="376" rx="20" ry="6" fill="#1e4a35"/>
+          <!-- Base -->
+          <ellipse cx="60" cy="380" rx="32" ry="8" fill="#245240"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN STRIP -->
+  <div class="origin-strip">
+    <span>Glera Grape Variety</span>
+    <span>Valdobbiadene Hills</span>
+    <span>Prosecco DOC Certified</span>
+    <span>Hand Harvested</span>
+    <span>Charmat Method</span>
+  </div>
+
+  <!-- TASTING NOTES -->
+  <section class="section" id="tasting">
+    <div class="section-label">Sensory Profile</div>
+    <h2>Tasting Notes</h2>
+    <div class="tasting-grid reveal">
+      <div class="tasting-notes">
+        <div class="note">
+          <div class="note-icon">👁</div>
+          <div>
+            <div class="note-title">Appearance</div>
+            <p class="note-desc">Pale straw yellow with delicate golden hues. A persistent, fine perlage rises elegantly to the surface, forming a bright, lively mousse.</p>
+          </div>
+        </div>
+        <div class="note">
+          <div class="note-icon">🌸</div>
+          <div>
+            <div class="note-title">Nose</div>
+            <p class="note-desc">Intensely aromatic with white peach, green apple, and acacia blossom. Subtle hints of pear, citrus zest, and fresh almond carry through on a clean, mineral finish.</p>
+          </div>
+        </div>
+        <div class="note">
+          <div class="note-icon">✦</div>
+          <div>
+            <div class="note-title">Palate</div>
+            <p class="note-desc">Fresh and crisp with lively effervescence. The sweetness is restrained and balanced by bright acidity. Long, clean finish with lingering notes of white fruit and cream.</p>
+          </div>
+        </div>
+      </div>
+      <div class="tasting-image">
+        <div class="tasting-card">
+          <p class="tasting-quote">
+            A wine that captures the light of the Treviso hills — bright, alive, and quietly unforgettable.
+          </p>
+          <div class="tasting-attribution">— Estate Notes, Harvest 2023</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPECS -->
+  <section class="specs-section" id="specs">
+    <div class="section-label">Technical Details</div>
+    <h2>Wine Specifications</h2>
+    <div class="specs-grid reveal">
+      <div class="spec-item">
+        <div class="spec-label">Grape Variety</div>
+        <div class="spec-value">Glera</div>
+        <div class="spec-note">100% — indigenous to Veneto</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Appellation</div>
+        <div class="spec-value">Prosecco DOC</div>
+        <div class="spec-note">Treviso, Veneto, Italy</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Style</div>
+        <div class="spec-value">Extra Dry</div>
+        <div class="spec-note">12–17 g/L residual sugar</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Alcohol</div>
+        <div class="spec-value">11% vol</div>
+        <div class="spec-note">Naturally low, refreshing</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Method</div>
+        <div class="spec-value">Charmat</div>
+        <div class="spec-note">Secondary fermentation in tank</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Serving Temp</div>
+        <div class="spec-value">6–8°C</div>
+        <div class="spec-note">Well chilled, flute or coupe</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Vintage</div>
+        <div class="spec-value">2023</div>
+        <div class="spec-note">Best consumed young</div>
+      </div>
+      <div class="spec-item">
+        <div class="spec-label">Format</div>
+        <div class="spec-value">75 cl</div>
+        <div class="spec-note">Also available: 150 cl Magnum</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOD PAIRING -->
+  <section class="pairing-section" id="pairing">
+    <div class="section-label">At the Table</div>
+    <h2>Food Pairing</h2>
+    <div class="pairing-grid reveal">
+      <div class="pairing-card">
+        <span class="pairing-emoji">🦐</span>
+        <div class="pairing-title">Seafood & Shellfish</div>
+        <p class="pairing-desc">The bright acidity and effervescence cut beautifully through king prawns, crab, and delicate smoked salmon blinis.</p>
+      </div>
+      <div class="pairing-card">
+        <span class="pairing-emoji">🧀</span>
+        <div class="pairing-title">Soft Cheeses</div>
+        <p class="pairing-desc">Creamy burrata, fresh ricotta, and mild goat's cheese are elevated by Bellavista's gentle sweetness and mineral finish.</p>
+      </div>
+      <div class="pairing-card">
+        <span class="pairing-emoji">🥗</span>
+        <div class="pairing-title">Light Starters</div>
+        <p class="pairing-desc">Melon and prosciutto, bruschetta, antipasti platters. A natural aperitivo companion for any occasion.</p>
+      </div>
+      <div class="pairing-card">
+        <span class="pairing-emoji">🍋</span>
+        <div class="pairing-title">Citrus Desserts</div>
+        <p class="pairing-desc">Lemon tart, panna cotta with passion fruit, and light sorbets echo the wine's freshness without competing.</p>
+      </div>
+      <div class="pairing-card">
+        <span class="pairing-emoji">🫧</span>
+        <div class="pairing-title">Simply Chilled</div>
+        <p class="pairing-desc">Honestly? Sometimes Bellavista needs nothing at all. Pour it cold, raise a glass, and let the moment breathe.</p>
+      </div>
+      <div class="pairing-card">
+        <span class="pairing-emoji">🎂</span>
+        <div class="pairing-title">Celebrations</div>
+        <p class="pairing-desc">Weddings, birthdays, anniversaries. The fine persistent bubbles and elegant profile make it the definitive toast.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ORIGIN -->
+  <section class="origin-section" id="origin">
+    <div class="origin-map">
+      <div class="origin-map-label">Treviso, Veneto</div>
+      <div class="origin-map-sub">45°N · 12°E · Northern Italy</div>
+      <div class="origin-coords">Elevation: 80–500m above sea level</div>
+    </div>
+    <div class="origin-text reveal">
+      <div class="section-label">The Land</div>
+      <h2>Born in the Hills of Treviso</h2>
+      <p>
+        The Glera vine has grown in the foothills of the Dolomites for centuries. 
+        The unique combination of Alpine breezes, chalky soils, and the sheltering warmth 
+        of the Venetian plain creates conditions found nowhere else on earth.
+      </p>
+      <p>
+        At Bellavista, the harvest is conducted by hand in late September when 
+        the grapes reach their optimum balance of sugar and acidity. 
+        Each cluster is individually inspected before pressing.
+      </p>
+      <p>
+        The result is a wine that carries the character of its landscape — 
+        fresh, mineral, and quietly radiant.
+      </p>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section" id="order">
+    <h2>Ready to <em>taste</em> Bellavista?</h2>
+    <p class="cta-desc">Order directly or find your nearest stockist. Delivered chilled, packaged with care.</p>
+    <a href="mailto:hello@bolloxnuts.com" class="btn-gold">Enquire Now</a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">Bellavista Prosecco</div>
+    <div class="footer-note">Treviso, Italy · Prosecco DOC</div>
+    <div class="age-notice">Please drink responsibly · 18+</div>
+  </footer>
+
+  <script>
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15 });
+    reveals.forEach(r => observer.observe(r));
+  </script>
+
+</body>
+</html>
