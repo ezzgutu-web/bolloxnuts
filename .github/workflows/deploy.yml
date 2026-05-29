@@ -12,18 +12,13 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP to 20i
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: Deploy via SFTP to 20i
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ftp.gb.stackcp.com
+          host: ftp.gb.stackcp.com
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          local-dir: ./
-          server-dir: /public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            .github/**
-            CLAUDE.md
-            README.md
+          port: 22
+          source: "index.html"
+          target: "/public_html/"
+          strip_components: 0
